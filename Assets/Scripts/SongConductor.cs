@@ -16,7 +16,7 @@ public class SongConductor : MonoBehaviour
 
 	private bool IsPlaying = false;
 	[SerializeField] AudioSource SongPlayer;
-	public float Beat;
+	public float BeatLength;
 	public float SongStartTime;
 	public int PreviousTimeSamples;
 	public int TotalSampleCount;
@@ -24,25 +24,37 @@ public class SongConductor : MonoBehaviour
 
 	public static SongConductor Instance;
 
-	public UnityEvent<int> trigger;
+	public UnityEvent<int> onNewMeasure;
+
+	public UnityEvent<int, int> onNewBeat;
 
     // Start is called before the first frame update
     void Start()
     {
         SongPlayer = GetComponent<AudioSource>();
-		Beat = (60 / BPM) * (4 / BeatsInMeasure);
+		BeatLength = (60 / BPM) * (4 / BeatsInMeasure);
 
 		Instance = this;
-
-		StartSong();
     }
 
 	public void SetBPM(float NewBPM) {
 		BPM = NewBPM;
-		Beat = (60 / BPM) * (4 / BeatsInMeasure);
+		BeatLength = (60 / BPM) * (4 / BeatsInMeasure);
 	}
 
-	void StartSong() {
+	public float GetBeatLength() {
+		return BeatLength;
+	}
+
+	public float GetMeasureLength() {
+		return BeatsInMeasure * BeatLength;
+	}
+
+	public bool IsCurrentlyPlaying() {
+		return IsPlaying;
+	}
+
+	public void StartSong() {
 		SetBPM(BPM);
 		SongPlayer.Play();
 
@@ -59,9 +71,12 @@ public class SongConductor : MonoBehaviour
 		SongPosition = ((float)TotalSampleCount / SongPlayer.clip.frequency) - StartOffset;
 		SongStartTime = SongPosition;
 
-		Debug.Log("Initial Value: " + SongPosition);
+		onNewBeat.Invoke(MeasureNumber, BeatNumber);
+		onNewMeasure.Invoke(MeasureNumber);
+	}
 
-		trigger.Invoke(BeatNumber);
+	public void StopSong() {
+
 	}
 
     // Update is called once per frame
@@ -79,18 +94,18 @@ public class SongConductor : MonoBehaviour
         
 		SongPosition = ((float)TotalSampleCount / SongPlayer.clip.frequency) - StartOffset;
 
-		while(SongPosition > LastBeat + Beat) {
-			Debug.Log("New Beat with SampleFreq:" + SongPosition + ", LastBeat + Beat: " + (LastBeat + Beat));
-
-			LastBeat += Beat;
+		while(SongPosition > LastBeat + BeatLength) {
+			LastBeat += BeatLength;
 			BeatNumber++;
 
 			while(BeatNumber >= BeatsInMeasure + 1) {
 				MeasureNumber++;
 				BeatNumber -= BeatsInMeasure;
+
+				onNewMeasure.Invoke(MeasureNumber);
 			}
 
-			trigger.Invoke(BeatNumber);
+			onNewBeat.Invoke(MeasureNumber, BeatNumber);
 		}
     }
 }
