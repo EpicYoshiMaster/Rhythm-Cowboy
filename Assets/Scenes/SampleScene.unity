@@ -1113,7 +1113,7 @@ RectTransform:
   - {fileID: 459431864}
   - {fileID: 2063796512}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1473,6 +1473,320 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897862721}
   m_CullTransparentMesh: 1
+--- !u!1 &937553208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937553210}
+  - component: {fileID: 937553209}
+  m_Layer: 0
+  m_Name: NoteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &937553209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937553208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25bb153b0d603b4abf446f638879d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NoteSuccessRadius: 0.1
+  NoteFailRadius: 0.2
+  PatternList:
+  - Beats:
+    - Beat: 1
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+  - Beats:
+    - Beat: 1
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 1
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+  - Beats:
+    - Beat: 1
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 1
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+  - Beats:
+    - Beat: 1
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+  - Beats:
+    - Beat: 1
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 1
+      Sixteenth: 2
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 1
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 2
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+  - Beats:
+    - Beat: 1
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+  - Beats:
+    - Beat: 1
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 1
+      Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 2
+      Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 3
+      Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+    - Beat: 4
+      Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+  - Beats:
+    - Beat: 4
+      Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
+  IsPlaying: 0
+--- !u!4 &937553210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937553208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 325, y: 171.28136, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111766868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,107 +2165,275 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f18d24803b2c404aac11121d0db7b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bottlePrefab:
-  - {fileID: 8034316014440055424, guid: 25aa581fe70e7df4b886c0323c533a41, type: 3}
   gunShot: {fileID: 1355880256}
   titleScreenMusic: {fileID: 1355880257}
   PatternList:
   - Beats:
     - Beat: 1
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
   - Beats:
     - Beat: 1
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 1
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
   - Beats:
     - Beat: 1
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 1
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
   - Beats:
     - Beat: 1
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
   - Beats:
     - Beat: 1
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 1
       Sixteenth: 2
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 1
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 2
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
   - Beats:
     - Beat: 1
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
   - Beats:
     - Beat: 1
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 1
       Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 2
       Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 3
       Sixteenth: 4
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
     - Beat: 4
       Sixteenth: 3
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
   - Beats:
     - Beat: 4
       Sixteenth: 1
-  placementRadius: 10
-  NoteSuccessRadius: 0.1
+      PlaceMeasure: 0
+      HasBeenPlaced: 0
+      HasBeenHit: 0
+      bottle: {fileID: 0}
   Lives: 3
   HitCount: 0
   MissCount: 0
@@ -2628,5 +3110,51 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2105408056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105408058}
+  - component: {fileID: 2105408057}
+  m_Layer: 0
+  m_Name: BottleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2105408057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105408056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96edb2ce8445e343914c0eddd62b906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottlePrefab: []
+  placementRadius: 10
+--- !u!4 &2105408058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105408056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 325, y: 171.28136, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
