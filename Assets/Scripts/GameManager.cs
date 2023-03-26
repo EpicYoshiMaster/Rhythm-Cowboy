@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] GameObject[] bottlePrefab;
 	[SerializeField] AudioSource gunShot;
+	[SerializeField] AudioSource titleScreenMusic;
 	public Pattern[] PatternList;
 
 	[SerializeField] float placementRadius = 10;
@@ -20,10 +21,13 @@ public class GameManager : MonoBehaviour
 
 	private Pattern CurrentPattern;
 	private int CurrentIndex;
+	private GameObject titleScreen;
+	private GameObject gameOverScreen;
 
 	private SongConductor Cond;
 	private GameState CurrentState = GameState.GS_Idle;
 	private List<GameObject> spawnedBottles = new List<GameObject>();
+	[SerializeField] int Lives = 3;
 
 	public int HitCount;
 	public int MissCount;
@@ -32,11 +36,33 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 		Cond = SongConductor.Instance;
+		titleScreen = GameObject.FindGameObjectWithTag("Titlescreen");
+		gameOverScreen = GameObject.FindGameObjectWithTag("Game Over");
+		
+		SetTitlescreenVisible(true);
 
 		//DoNextPattern();
 		CurrentPattern = GetNextPattern();
 		CurrentIndex = 0;
     }
+
+	void SetTitlescreenVisible(bool bVisible) {
+		if(bVisible) {
+			titleScreen.SetActive(true);
+			titleScreenMusic.Play();
+		}
+		else {
+			titleScreen.SetActive(false);
+			titleScreenMusic.Stop();
+		}
+
+		gameOverScreen.SetActive(false);
+	}
+
+	void OnLoseGame() {
+		Cond.StopSong();
+		gameOverScreen.SetActive(true);
+	}
 
 	void PlaceBottle(Note noteTime) {
 		if(bottlePrefab.Length <= 0) return;
@@ -99,14 +125,17 @@ public class GameManager : MonoBehaviour
 		return null;
 	}
 
-
-
     // Update is called once per frame
     void Update()
     {
-		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Slash)) {
+		if(Input.anyKeyDown) {
+			if(gameOverScreen.activeInHierarchy) {
+				SetTitlescreenVisible(true);
+				return;
+			}
+
 			if(!Cond.IsCurrentlyPlaying()) {
-				Debug.Log("Pew!~");
+				SetTitlescreenVisible(false);
 
 				Cond.StartSong();
 
@@ -148,6 +177,11 @@ public class GameManager : MonoBehaviour
 
 			if(currentNote != null && IsNoteExpired(currentNote)) {
 				MissCount++;
+				Lives--;
+
+				if(Lives <= 0) {
+					OnLoseGame();
+				}
 
 				Bottle bottleScript = spawnedBottles[CurrentIndex].GetComponent<Bottle>();
 				bottleScript.Explode();

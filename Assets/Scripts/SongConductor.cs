@@ -76,7 +76,8 @@ public class SongConductor : MonoBehaviour
 	}
 
 	public void StopSong() {
-
+		IsPlaying = false;
+		SongPlayer.Stop();
 	}
 
     // Update is called once per frame
