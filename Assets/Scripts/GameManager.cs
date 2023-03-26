@@ -24,11 +24,14 @@ public class GameManager : MonoBehaviour
 	private TextMeshProUGUI livesText;
 	private TMP_InputField gameOverText;
 	private SongConductor Cond;
+	private List<GameObject> BeatPulsers = new List<GameObject>();
 
 	[SerializeField] float DelayAcceptInput = 1.0f;
 	//private GameState CurrentState = GameState.GS_Idle;
 	
 	[SerializeField] int Lives = 3;
+	[SerializeField] float PulseAmount = 1.1f;
+	[SerializeField] float ReturnSpeed = 8f;
 
 	private float RemainingInputWait = 0.0f;
 
@@ -51,6 +54,11 @@ public class GameManager : MonoBehaviour
 		bottlesShotText = GameObject.FindGameObjectWithTag("Bottles Shot").GetComponent<TextMeshProUGUI>();
 		livesText = GameObject.FindGameObjectWithTag("Lives").GetComponent<TextMeshProUGUI>();
 		gameOverText = GameObject.FindGameObjectWithTag("Game Over Text").GetComponent<TMP_InputField>();
+
+		BeatPulsers.Add(GameObject.FindGameObjectWithTag("Level"));
+		BeatPulsers.Add(GameObject.FindGameObjectWithTag("Bottles Shot"));
+		BeatPulsers.Add(GameObject.FindGameObjectWithTag("Lives"));
+		BeatPulsers.Add(GameObject.FindGameObjectWithTag("Instructions"));
 
 		SetHitCount(0);
 		SetLivesCount(3);
@@ -150,6 +158,10 @@ public class GameManager : MonoBehaviour
 			return;
 		}
 
+		for(int i = 0; i < BeatPulsers.Count; i++) {
+			BeatPulsers[i].transform.localScale = Vector3.Lerp(BeatPulsers[i].transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * ReturnSpeed);
+		}
+
 		if(Input.anyKeyDown) {
 			if(gameOverScreen.activeInHierarchy) {
 				SetTitlescreenVisible(true);
@@ -171,4 +183,14 @@ public class GameManager : MonoBehaviour
 			}
 		}
     }
+
+	public void Pulse() {
+		for(int i = 0; i < BeatPulsers.Count; i++) {
+			BeatPulsers[i].transform.localScale = new Vector3(1, 1, 1) * PulseAmount;
+		}
+	}
+
+	public void OnNewBeat(int MeasureNumber, int BeatNumber) {
+		Pulse();
+	}
 }

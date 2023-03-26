@@ -13,6 +13,7 @@ TagManager:
   - Instructions
   - Level
   - Game Over Text
+  - Gun
   layers:
   - Default
   - TransparentFX
