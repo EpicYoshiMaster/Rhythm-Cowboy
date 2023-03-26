@@ -2,13 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class NoteManager : MonoBehaviour
 {
 	[SerializeField] float NoteSuccessRadius = 0.1f;
 	[SerializeField] float NoteFailRadius = 0.2f;
 	[SerializeField] Pattern[] PatternList;
-
+	[SerializeField] Pattern[] EasyPatterns;
+	[SerializeField] Pattern[] NormalPatterns;
+	[SerializeField] Pattern[] HardPatterns;
+	[SerializeField] int NormalStartWave = 11;
+	[SerializeField] int HardStartWave = 21;
+	[SerializeField] int FreeStartWave = 31;
+	[SerializeField] float ShowSpeechBubbleTime = 2.0f;
+	[SerializeField] GameObject[] SpeechBubbles;
 	private Pattern CurrentPattern;
 	private List<Note> AllNotes = new List<Note>();
 
@@ -21,8 +29,19 @@ public class NoteManager : MonoBehaviour
 	private GameObject Cowboy;
 	private Vector3 cowboyOriginalPos;
 
+	private TextMeshProUGUI instructionsText;
+	[HideInInspector] public int WaveNumber = 0;
+	private bool MissedANote = true;
+	private float SpeechBubbleDuration = 0.0f;
+
 	public void SetIsPlaying(bool bIsPlaying) {
 		IsPlaying = bIsPlaying;
+
+		WaveNumber = 0;
+
+		MissedANote = true;
+
+		HideSpeechBubble();
 	}
 
 	public void CleanUpAll() {
@@ -65,13 +84,9 @@ public class NoteManager : MonoBehaviour
 			if(AllNotes[i].HasBeenHit) continue;
 			if(!AllNotes[i].HasBeenPlaced) continue;
 
-			Debug.Log("Hit Time: " + Cond.SongPosition + ", Note Time: " + GetNoteTime(AllNotes[i], true));
-
 			if(IsNoteInRadius(AllNotes[i], NoteSuccessRadius)) {
 				AllNotes[i].HasBeenHit = true;
 				bottleManager.HitBottle(AllNotes[i].bottle);
-
-				Debug.Log("Hit");
 
 				gameManager.OnHitNote();
 
@@ -82,9 +97,9 @@ public class NoteManager : MonoBehaviour
 				AllNotes[i].HasBeenHit = true;
 				bottleManager.MissBottle(AllNotes[i].bottle);
 
-				Debug.Log("Player Miss");
+				gameManager.OnPlayerMissNote();
 
-				gameManager.OnMissNote();
+				MissedANote = true;
 
 				return;
 			}
@@ -94,7 +109,26 @@ public class NoteManager : MonoBehaviour
 	}
 
 	Pattern GetNextPattern() {
-		return PatternList[Random.Range(0, PatternList.Length)];
+		int FreeWaveRandom = Random.Range(0, 3);
+
+		if(WaveNumber < NormalStartWave) {
+			return EasyPatterns[Random.Range(0, EasyPatterns.Length)];
+		}
+
+		if(WaveNumber < HardStartWave) {
+			return NormalPatterns[Random.Range(0, NormalPatterns.Length)];
+		}
+
+		if(WaveNumber < FreeStartWave) {
+			return HardPatterns[Random.Range(0, HardPatterns.Length)];
+		}
+
+		switch(FreeWaveRandom) {
+			case 0: return EasyPatterns[Random.Range(0, EasyPatterns.Length)];
+			case 1: return NormalPatterns[Random.Range(0, NormalPatterns.Length)];
+			case 2: return HardPatterns[Random.Range(0, HardPatterns.Length)];
+			default: return HardPatterns[Random.Range(0, HardPatterns.Length)];
+		}
 	}
 
 	//If bGameplay is true, return the gameplay time, not the placement time
@@ -109,8 +143,6 @@ public class NoteManager : MonoBehaviour
 	bool IsNoteInRadius(Note currNote, float Radius) {
 		float NoteTime = GetNoteTime(currNote, true);
 
-		//Debug.Log("Hit Time: " + Cond.SongPosition + ", Note Time: " + NoteTime + "Difference: " + Mathf.Abs(Cond.SongPosition - NoteTime));
-
 		return (Cond.SongPosition >= NoteTime - Radius && Cond.SongPosition <= NoteTime + Radius);
 	}
 
@@ -124,6 +156,8 @@ public class NoteManager : MonoBehaviour
 
 		Cowboy = GameObject.FindGameObjectWithTag("Cowboy");
 		cowboyOriginalPos = Cowboy.transform.position;
+
+		instructionsText = GameObject.FindGameObjectWithTag("Instructions").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -141,6 +175,14 @@ public class NoteManager : MonoBehaviour
 			bottleManager = BottleManager.instance;
 		}
 
+		if(SpeechBubbleDuration > 0) {
+			SpeechBubbleDuration -= Time.deltaTime;
+
+			if(SpeechBubbleDuration <= 0) {
+				HideSpeechBubble();
+			}
+		}
+
         for(int i = 0; i < AllNotes.Count; i++) {
 			if(AllNotes[i].HasBeenHit) continue;
 
@@ -152,7 +194,7 @@ public class NoteManager : MonoBehaviour
 
 					gameManager.OnMissNote();
 
-					Debug.Log("Miss");
+					MissedANote = true;
 				}
 
 				continue;
@@ -165,15 +207,49 @@ public class NoteManager : MonoBehaviour
 		}
     }
 
+	void ShowSpeechBubble() {
+		if(SpeechBubbles.Length <= 0) return;
+
+		SpeechBubbleDuration = ShowSpeechBubbleTime;
+
+		int RandomSpeechBubble = Random.Range(0, SpeechBubbles.Length);
+
+		SpeechBubbles[RandomSpeechBubble].SetActive(true);
+	}
+
+	void HideSpeechBubble() {
+		for(int i = 0; i < SpeechBubbles.Length; i++) {
+			SpeechBubbles[i].SetActive(false);
+		}
+	}
+
 	public void OnMeasure(int Measure) {
-		if(!IsPlaying) return;
+		if(!IsPlaying) {
+			instructionsText.SetText("Wait...");
+			return;
+		}
 
 		if(Measure % 2 != 0) {
 			CleanUpPlayedNotes();
 
 			QueuePattern(GetNextPattern());
+
+			instructionsText.SetText("Listen...");
+
+			if(!MissedANote) {
+				ShowSpeechBubble();
+			}
+
+			WaveNumber++;
+			gameManager.SetLevelNumber(WaveNumber);
+
+			MissedANote = false;
 		}
 		else {
+			if(AllNotes.Count > 0) {
+				instructionsText.SetText("Play!");
+			}
+			
 			Cowboy.transform.position = cowboyOriginalPos;
 		}
 	}

@@ -7,6 +7,12 @@ TagManager:
   - Titlescreen
   - Game Over
   - Cowboy
+  - Gameplay
+  - Bottles Shot
+  - Lives
+  - Instructions
+  - Level
+  - Game Over Text
   layers:
   - Default
   - TransparentFX
