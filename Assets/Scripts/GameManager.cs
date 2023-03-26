@@ -162,6 +162,26 @@ public class GameManager : MonoBehaviour
 			BeatPulsers[i].transform.localScale = Vector3.Lerp(BeatPulsers[i].transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * ReturnSpeed);
 		}
 
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			if(Cond.IsCurrentlyPlaying()) {
+				Cond.StopSong();
+
+				noteManager.CleanUpAll();
+				noteManager.SetIsPlaying(false);
+				gameplayStats.SetActive(false);
+				gameOverScreen.SetActive(false);
+
+				RemainingInputWait = DelayAcceptInput;
+
+				SetTitlescreenVisible(true);
+			}
+			else {
+				Application.Quit();
+			}
+
+			return;
+		}
+
 		if(Input.anyKeyDown) {
 			if(gameOverScreen.activeInHierarchy) {
 				SetTitlescreenVisible(true);

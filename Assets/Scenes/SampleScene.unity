@@ -692,7 +692,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Cowboy Dakota will place down\nbottles in a rhythmic pattern.\n\nShoot
     the bottles by pressing any button\nto match the rhythm he played.\n\nPress Any
-    Button to Start...\u200B"
+    Button to Start...\n(Press Escape to Quit)\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0416f237dfcbcdb47aee92f76c5661a9, type: 2}
   m_sharedMaterial: {fileID: 2085462320750915852, guid: 0416f237dfcbcdb47aee92f76c5661a9, type: 2}
@@ -719,8 +719,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3568,7 +3568,9 @@ MonoBehaviour:
 
 
     Press
-    Any Button to Start...'
+    Any Button to Start...
+
+    (Press Escape to Quit)'
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -3787,7 +3789,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 85.35
+  m_fontSize: 93.35
   m_fontSizeBase: 45.5
   m_fontWeight: 400
   m_enableAutoSizing: 1
