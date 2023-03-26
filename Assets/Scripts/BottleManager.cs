@@ -6,6 +6,7 @@ public class BottleManager : MonoBehaviour
 {
 	[SerializeField] GameObject[] bottlePrefab;
 	[SerializeField] float placementRadius = 10;
+	[SerializeField] float placementHeight = 1;
 	public static BottleManager instance;
 
 	public GameObject PlaceBottle(Note noteTime) {
@@ -13,7 +14,13 @@ public class BottleManager : MonoBehaviour
 
 		GameObject summonBottle = bottlePrefab[Random.Range(0, bottlePrefab.Length)];
 
-		return Instantiate(summonBottle, new Vector3(GetBottleXLocation(noteTime), 0, 0), summonBottle.transform.rotation);
+		float XPos = GetBottleXLocation(noteTime);
+
+		GameObject cowboy = GameObject.FindGameObjectWithTag("Cowboy");
+
+		cowboy.transform.position = new Vector3(XPos, cowboy.transform.position.y, cowboy.transform.position.z);
+
+		return Instantiate(summonBottle, new Vector3(XPos, placementHeight, 0), summonBottle.transform.rotation);
 	}
 
 	public void HitBottle(GameObject bottle) {

@@ -101,53 +101,6 @@ public class GameManager : MonoBehaviour
 			else {
 				noteManager.OnPlayerInput();
 			}
-			/*
-			else {
-				Note currentNote;
-
-				if(CurrentState == GameState.GS_Placing) {
-					currentNote = CurrentPattern.Beats[0];
-				}
-				else {
-					currentNote = GetCurrentNote();
-				}
-
-				if(currentNote != null && IsInRangeOfNote(currentNote)) {
-					HitCount++;
-
-					gunShot.Play();
-
-					Bottle.HitBottle(CurrentIndex);
-
-					CurrentIndex++;
-				}
-			}*/
 		}
-
-		/*
-		if(CurrentState == GameState.GS_Placing) {
-			Note nextNote = GetCurrentNote();
-
-			if(nextNote != null && Cond.SongPosition > ((GameplayMeasure - 1) * Cond.GetMeasureLength()) + GetMeasureOffsetForNote(nextNote)) {
-				Bottle.PlaceBottle(nextNote);
-				CurrentIndex++;
-			}
-		}
-		else if(CurrentState == GameState.GS_Shooting) {
-			Note currentNote = GetCurrentNote();
-
-			if(currentNote != null && IsNoteExpired(currentNote)) {
-				MissCount++;
-				Lives--;
-
-				if(Lives <= 0) {
-					OnLoseGame();
-				}
-
-				Bottle.MissBottle(CurrentIndex);
-
-				CurrentIndex++;
-			}
-		}*/
     }
 }

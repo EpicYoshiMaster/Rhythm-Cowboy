@@ -11,6 +11,8 @@ public class Bottle : MonoBehaviour
 	//Explode/Break
 
 	public void Explode() {
-		Destroy(gameObject);
+		Animator anim = GetComponent<Animator>();
+
+		anim.enabled = true;
 	}
 }

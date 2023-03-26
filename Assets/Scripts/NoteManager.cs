@@ -18,6 +18,9 @@ public class NoteManager : MonoBehaviour
 	public bool IsPlaying = false;
 	public static NoteManager Instance;
 
+	private GameObject Cowboy;
+	private Vector3 cowboyOriginalPos;
+
 	public void SetIsPlaying(bool bIsPlaying) {
 		IsPlaying = bIsPlaying;
 	}
@@ -118,6 +121,9 @@ public class NoteManager : MonoBehaviour
         Cond = SongConductor.Instance;
 		bottleManager = BottleManager.instance;
 		Instance = this;
+
+		Cowboy = GameObject.FindGameObjectWithTag("Cowboy");
+		cowboyOriginalPos = Cowboy.transform.position;
     }
 
     // Update is called once per frame
@@ -166,6 +172,9 @@ public class NoteManager : MonoBehaviour
 			CleanUpPlayedNotes();
 
 			QueuePattern(GetNextPattern());
+		}
+		else {
+			Cowboy.transform.position = cowboyOriginalPos;
 		}
 	}
 }
